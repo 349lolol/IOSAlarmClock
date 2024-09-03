@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		78DEABC22C862DE70019DC17 /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 78DEABC12C862DE70019DC17 /* OpenMeteoSdk */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		789984D52C7DA86100303062 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -35,16 +39,6 @@
 			path = alarmClock;
 			sourceTree = "<group>";
 		};
-		789984D72C7DA86100303062 /* alarmClockTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = alarmClockTests;
-			sourceTree = "<group>";
-		};
-		789984E12C7DA86100303062 /* alarmClockUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = alarmClockUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DEABC22C862DE70019DC17 /* OpenMeteoSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				789984C42C7DA86000303062 /* alarmClock */,
-				789984D72C7DA86100303062 /* alarmClockTests */,
-				789984E12C7DA86100303062 /* alarmClockUITests */,
 				789984C32C7DA86000303062 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +105,7 @@
 			);
 			name = alarmClock;
 			packageProductDependencies = (
+				78DEABC12C862DE70019DC17 /* OpenMeteoSdk */,
 			);
 			productName = alarmClock;
 			productReference = 789984C22C7DA86000303062 /* alarmClock.app */;
@@ -129,9 +123,6 @@
 			);
 			dependencies = (
 				789984D62C7DA86100303062 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				789984D72C7DA86100303062 /* alarmClockTests */,
 			);
 			name = alarmClockTests;
 			packageProductDependencies = (
@@ -152,9 +143,6 @@
 			);
 			dependencies = (
 				789984E02C7DA86100303062 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				789984E12C7DA86100303062 /* alarmClockUITests */,
 			);
 			name = alarmClockUITests;
 			packageProductDependencies = (
@@ -195,6 +183,9 @@
 			);
 			mainGroup = 789984B92C7DA86000303062;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				78DEABC02C862DE70019DC17 /* XCRemoteSwiftPackageReference "sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 789984C32C7DA86000303062 /* Products */;
 			projectDirPath = "";
@@ -552,6 +543,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		78DEABC02C862DE70019DC17 /* XCRemoteSwiftPackageReference "sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-meteo/sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		78DEABC12C862DE70019DC17 /* OpenMeteoSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78DEABC02C862DE70019DC17 /* XCRemoteSwiftPackageReference "sdk" */;
+			productName = OpenMeteoSdk;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 789984BA2C7DA86000303062 /* Project object */;
 }

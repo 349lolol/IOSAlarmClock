@@ -2,7 +2,7 @@
 //  alarmClockApp.swift
 //  alarmClock
 //
-//  Created by Patrick Wei on 2024-08-27.
+//  Created by Patrick Wei on 2024-08-02.
 //
 
 import SwiftUI
@@ -10,9 +10,10 @@ import SwiftData
 
 @main
 struct alarmClockApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
