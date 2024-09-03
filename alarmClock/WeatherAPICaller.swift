@@ -25,15 +25,20 @@ class WeatherData: ObservableObject {
     private init() { }
 
     func fetchWeatherData(latitude: Double, longitude: Double, timezone: String) async throws {
-        let urlString = "https://open-meteo.com/en/docs#latitude=43.8711&longitude=-79.4373&hourly=&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum&timezone=\(timezone)&forecast_days=1&format=flatbuffers"
+        let urlString = "https://open-meteo.com/en/docs#latitude=43.8711&longitude=-79.4373&hourly=&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum&timezone=America%2FNew_York&forecast_days=1&format=flatbuffers"
         
+
+
         //https://open-meteo.com/en/docs#latitude=43.8711&longitude=-79.4373&hourly=&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum&timezone=America%2FNew_York&forecast_days=1
         
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
         
+//        guard let url = URL(string: urlString) else {
+//            throw URLError(.badURL)
+//        }
+        let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=43.8711&longitude=-79.4373&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum&timezone=America%2FNew_York&forecast_days=1&format=flatbuffers")!
         let responses = try await WeatherApiResponse.fetch(url: url)
+        
+        //let responses = try await WeatherApiResponse.fetch(url: url)
         let response = responses[0]
         let utcOffsetSeconds = response.utcOffsetSeconds
         let daily = response.daily!
