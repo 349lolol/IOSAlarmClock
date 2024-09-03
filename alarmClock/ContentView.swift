@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  alarmClock
-//
-//  Created by Patrick Wei on 2024-08-02.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -26,9 +19,9 @@ struct ContentView: View {
                 // Alarm settings view with infinite scrolling UI
                 AlarmSettingsView(alarmManager: alarmManager)
 
-                // navigate to AlarmTriggered
+                // Navigate to AlarmTriggeredView when alarm is triggered
                 NavigationLink(
-                    destination: AlarmTriggeredView(alarmTriggered: AlarmTriggered.shared),
+                    destination: AlarmTriggeredView(alarmTriggered: AlarmTriggered.shared, storedText: storedText),
                     isActive: $showAlarmTriggeredView
                 ) {
                     EmptyView()
@@ -41,6 +34,9 @@ struct ContentView: View {
             .onAppear {
                 startAlarmChecker()
                 listenForAlarmTrigger()
+                NotificationCenter.default.addObserver(forName: NSNotification.Name("ClearNavigationStack"), object: nil, queue: .main) { _ in
+                    showAlarmTriggeredView = false
+                }
             }
         }
     }
@@ -67,12 +63,11 @@ struct ContentView: View {
         }
     }
 
-    // Function to refresh weather data asynchronously
     func refreshWeatherData() {
         Task {
             do {
-                //https://open-meteo.com/en/docs#latitude=43.8711&longitude=-79.4373&hourly=&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum&timezone=America%2FNew_York&forecast_days=1
-                try await weatherData.fetchWeatherData(latitude: 43, longitude: -79, timezone: "America/New_York")
+                // Adjust the latitude and longitude as needed
+                try await weatherData.fetchWeatherData(latitude: 43.6532, longitude: -79.3832, timezone: "America/Toronto")
             } catch {
                 print("Failed to fetch weather data: \(error.localizedDescription)")
             }

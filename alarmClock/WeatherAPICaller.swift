@@ -55,3 +55,72 @@ class WeatherData: ObservableObject {
         }
     }
 }
+extension WeatherData {
+    func generateWeatherDescription() -> String {
+        var description = ""
+
+        // Interpret the weather code
+        if let weatherCode = weatherCode {
+            switch weatherCode {
+            case 0:
+                description += "Clear sky."
+            case 1, 2, 3:
+                description += "Some clouds."
+            case 45, 48:
+                description += "Fog or depositing rime fog."
+            case 51, 53, 55:
+                description += "Drizzle with light to dense intensity."
+            case 56, 57:
+                description += "Freezing drizzle with light or dense intensity."
+            case 61, 63, 65:
+                description += "Rain with slight to heavy intensity."
+            case 66, 67:
+                description += "Freezing rain with light or heavy intensity."
+            case 71, 73, 75:
+                description += "Snowfall with slight to heavy intensity."
+            case 77:
+                description += "Snow grains."
+            case 80, 81, 82:
+                description += "Rain showers with slight to violent intensity."
+            case 85, 86:
+                description += "Snow showers with slight or heavy intensity."
+            case 95:
+                description += "Thunderstorm with slight or moderate intensity."
+            case 96, 99:
+                description += "Thunderstorm with slight or heavy hail."
+            default:
+                description += "Unknown weather conditions."
+            }
+        }
+
+        // Add temperature information
+        if let tempMax = temperature2mMax, let tempMin = temperature2mMin {
+            description += " The temperature will range from \(Int(tempMin))°C to \(Int(tempMax))°C."
+        }
+
+        // Add UV index information
+        if let uvIndex = uvIndexMax {
+            description += " The maximum UV index will be \(Int(uvIndex))."
+        }
+
+        // Add precipitation information with qualitative description
+        if let precipitation = precipitationSum {
+            let precipitationDescription: String
+            switch precipitation {
+            case 0..<1:
+                precipitationDescription = "No significant precipitation expected."
+            case 1..<5:
+                precipitationDescription = "Light precipitation expected."
+            case 5..<10:
+                precipitationDescription = "Moderate precipitation expected."
+            case 10...:
+                precipitationDescription = "Heavy precipitation expected."
+            default:
+                precipitationDescription = "Unknown precipitation conditions."
+            }
+            description += " \(precipitationDescription)"
+        }
+
+        return description
+    }
+}

@@ -46,7 +46,7 @@ struct AlarmSettingsView: View {
                     .cornerRadius(10)
             }
         }
-        .padding()
+        .padding ()
     }
 
     // Helper function to format the selected time

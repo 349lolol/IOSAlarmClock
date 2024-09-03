@@ -1,15 +1,10 @@
-//
-//  AlarmTriggerView.swift
-//  alarmClock
-//
-//  Created by Patrick Wei on 2024-08-30.
-//
-
 import SwiftUI
 
 struct AlarmTriggeredView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var alarmTriggered: AlarmTriggered
+    @State private var navigateToSpeechView = false
+    var storedText: String
 
     var body: some View {
         VStack(spacing: 20) {
@@ -17,10 +12,9 @@ struct AlarmTriggeredView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
 
-            // Button to stop the alarm sound and go back to the first page
             Button(action: {
                 alarmTriggered.stopAlarm()
-                presentationMode.wrappedValue.dismiss()
+                navigateToSpeechView = true
             }) {
                 Text("Stop Alarm")
                     .foregroundColor(.white)
@@ -28,6 +22,15 @@ struct AlarmTriggeredView: View {
                     .background(Color.red)
                     .cornerRadius(10)
             }
+            .background(
+                NavigationLink(
+                    destination: SpeechView(storedText: storedText),
+                    isActive: $navigateToSpeechView
+                ) {
+                    EmptyView()
+                }
+                .hidden()
+            )
         }
         .padding()
         .navigationTitle("Alarm Triggered")
