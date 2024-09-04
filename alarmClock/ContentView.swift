@@ -5,7 +5,6 @@
 //  Created by Patrick Wei on 2024-08-02.
 //
 
-
 import SwiftUI
 
 struct ContentView: View {
@@ -48,11 +47,18 @@ struct ContentView: View {
                 }
             }
             .onAppear {
+                loadSavedValues()  // Load saved values when view appears
                 startAlarmChecker()
                 listenForAlarmTrigger()
                 NotificationCenter.default.addObserver(forName: NSNotification.Name("ClearNavigationStack"), object: nil, queue: .main) { _ in
                     showAlarmTriggeredView = false
                 }
+            }
+            .onChange(of: storedText) { newValue in
+                saveValues()  // Save values when they change
+            }
+            .onChange(of: selectedOption) { newValue in
+                saveValues()  // Save values when they change
             }
         }
     }
@@ -85,5 +91,15 @@ struct ContentView: View {
                 print("Failed to fetch weather data: \(error.localizedDescription)")
             }
         }
+    }
+
+    func saveValues() {
+        UserDefaults.standard.set(storedText, forKey: "storedText")
+        UserDefaults.standard.set(selectedOption, forKey: "selectedOption")
+    }
+
+    func loadSavedValues() {
+        storedText = UserDefaults.standard.string(forKey: "storedText") ?? ""
+        selectedOption = UserDefaults.standard.integer(forKey: "selectedOption")
     }
 }

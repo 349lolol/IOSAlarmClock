@@ -1,4 +1,3 @@
-
 //
 //  InfiniteUIPickerView.swift
 //  alarmClock
@@ -10,9 +9,10 @@ import UIKit
 
 class InfiniteUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    private var items: [String] = []
-    private let maxElements = 10000
-    private var rowHeight: CGFloat
+    public var items: [String] = []
+    public let maxElements = 10000
+    public var rowHeight: CGFloat
+    public var onValueChange: (() -> Void)? // Closure to notify value change
 
     init(items: [String], rowHeight: CGFloat = 44) {
         self.items = items
@@ -55,5 +55,9 @@ class InfiniteUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewData
     func getCurrentValue() -> String {
         let selectedRow = self.selectedRow(inComponent: 0)
         return items[selectedRow % items.count]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        onValueChange?()  // Notify parent view controller about the value change
     }
 }
