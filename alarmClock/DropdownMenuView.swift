@@ -34,12 +34,12 @@ struct DropdownMenuView: View {
                     endPoint: .bottomTrailing
                 )
             )
-            .cornerRadius(12) // Rounded corners
+            .cornerRadius(12) 
             .overlay(
-                RoundedRectangle(cornerRadius: 12) // Border with rounded corners
-                    .stroke(Color.blue, lineWidth: 2) // Custom border color and width
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.blue, lineWidth: 2)
             )
         }
-        .padding(.horizontal) // Match the horizontal padding of the ResizeableTextField
+        .padding(.horizontal)
     }
 }

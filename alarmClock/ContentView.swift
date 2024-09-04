@@ -1,3 +1,11 @@
+//
+//  ContentView.swift
+//  alarmClock
+//
+//  Created by Patrick Wei on 2024-08-02.
+//
+
+
 import SwiftUI
 
 struct ContentView: View {
@@ -30,11 +38,11 @@ struct ContentView: View {
                 Spacer()
             }
             .padding()
-            .navigationBarTitleDisplayMode(.inline)  // Centers the title
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Alarm Settings")
-                        .font(.custom("Roboto", size: 24))  // Use your custom font
+                        .font(.custom("Roboto", size: 24))
                         .foregroundColor(.primary)
                         .bold()
                 }
@@ -63,10 +71,8 @@ struct ContentView: View {
         DispatchQueue.main.async {
             showAlarmTriggeredView = true
 
-            // Play the selected alarm sound
             AlarmTriggered.shared.playAlarmSound(named: selectedOption == 0 ? "MorningFlower" : "OverTheHorizon")
-
-            // Refresh weather data
+            
             refreshWeatherData()
         }
     }
@@ -74,7 +80,6 @@ struct ContentView: View {
     func refreshWeatherData() {
         Task {
             do {
-                // Adjust the latitude and longitude as needed
                 try await weatherData.fetchWeatherData(latitude: 43.6532, longitude: -79.3832, timezone: "America/Toronto")
             } catch {
                 print("Failed to fetch weather data: \(error.localizedDescription)")

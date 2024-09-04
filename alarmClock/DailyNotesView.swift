@@ -20,7 +20,7 @@ struct DailyNotes: View {
         VStack(spacing: 20) {
 
             Text("Enter notes here")
-                .font(.custom("Roboto", size: 12))  // Use your custom font
+                .font(.custom("Roboto", size: 12))
                 .foregroundColor(.black)
                 .bold()
 

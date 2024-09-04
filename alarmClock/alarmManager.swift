@@ -67,7 +67,6 @@ class AlarmManager: ObservableObject {
     }
 
     private func triggerAlarm() {
-        // Post a notification that the alarm has been triggered
         NotificationCenter.default.post(name: NSNotification.Name("AlarmTriggered"), object: nil)
     }
 }

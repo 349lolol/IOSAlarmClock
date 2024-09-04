@@ -20,16 +20,16 @@ struct ResizeableTextField: View {
         VStack(spacing: 20) {
             Text("Enter your notes:")
                 .font(.headline)
-                .foregroundColor(.blue) // Custom font color
+                .foregroundColor(.blue)
 
             TextEditor(text: $userText)
-                .font(.body) // Custom font
-                .padding(10) // Add padding inside the text editor
-                .background(Color(.white)) // Background color for the text editor
-                .cornerRadius(12) // Rounded corners
+                .font(.body)
+                .padding(10)
+                .background(Color(.white))
+                .cornerRadius(12)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 12) // Border with rounded corners
-                        .stroke(Color.blue, lineWidth: 2) // Custom border color and width
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.blue, lineWidth: 2)
                 )
                 .frame(height: 150)
                 .frame(width: 330)

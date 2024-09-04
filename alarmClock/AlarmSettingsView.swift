@@ -51,7 +51,7 @@ struct AlarmSettingsView: View {
                             endPoint: .bottomTrailing
                         )
                     )
-                    .cornerRadius(12) // Rounded corners
+                    .cornerRadius(12)
             }
         }
         .padding ()

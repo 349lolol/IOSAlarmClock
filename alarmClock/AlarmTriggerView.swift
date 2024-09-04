@@ -1,3 +1,11 @@
+//
+//  AlarmTriggerView.swift
+//  alarmClock
+//
+//  Created by Patrick Wei on 2024-08-30.
+//
+
+
 import SwiftUI
 
 struct AlarmTriggeredView: View {
@@ -28,11 +36,11 @@ struct AlarmTriggeredView: View {
                 }
                 .hidden()
             )
-            .navigationBarTitleDisplayMode(.inline)  // Centers the title
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Alarm Triggered")
-                        .font(.custom("Roboto", size: 24))  // Use your custom font
+                        .font(.custom("Roboto", size: 24)) 
                         .foregroundColor(.primary)
                         .bold()
                 }

@@ -19,10 +19,8 @@ struct SpeechView: View {
             Button(action: {
                 Speech.shared.stopSpeaking()
 
-                // Dismiss the current view
                 presentationMode.wrappedValue.dismiss()
 
-                // Send a notification to clear the navigation stack
                 NotificationCenter.default.post(name: NSNotification.Name("ClearNavigationStack"), object: nil)
             }) {
                 Text("Stop Speaking")
@@ -33,11 +31,11 @@ struct SpeechView: View {
             }
         }
         .padding()
-        .navigationBarTitleDisplayMode(.inline)  // Centers the title
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Daily Reminders")
-                    .font(.custom("Roboto", size: 24))  // Use your custom font
+                    .font(.custom("Roboto", size: 24))
                     .foregroundColor(.primary)
                     .bold()
             }
@@ -45,10 +43,9 @@ struct SpeechView: View {
         .frame(width: 330)
         .onAppear {
             Task {
-                let weatherDescription = "Here's the weather today: " + weatherData.generateWeatherDescription() + " Here are your notes for the day: " + storedText
+                let narratorScript = "Here's the weather today: " + weatherData.generateWeatherDescription() + " Here are your notes for the day: " + storedText
 
-                // Start speaking the weather description and notes
-                Speech.shared.startSpeaking(text: weatherDescription)
+                Speech.shared.startSpeaking(text: narratorScript)
             }
         }
     }
