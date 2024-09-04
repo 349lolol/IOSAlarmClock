@@ -1,7 +1,6 @@
 Basic IOS clock app with additional functionalities built-in
 
-Purpose
-Create an all-in-one clock app for IOS and IpadOS users to use instead of the default clock app, with simplified UI + additional features
+Purpose - Create an all-in-one clock app for IOS and IpadOS users to use instead of the default clock app, with simplified UI + additional features
 
 Innovations on basic clock app
 - area to write daily notes
