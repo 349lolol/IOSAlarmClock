@@ -1,3 +1,10 @@
+//
+//  SpeechView.swift
+//  alarmClock
+//
+//  Created by Patrick Wei on 2024-09-03.
+//
+
 import SwiftUI
 
 struct SpeechView: View {
@@ -29,7 +36,15 @@ struct SpeechView: View {
             }
         }
         .padding()
-        .navigationTitle("Speech")
+        .navigationBarTitleDisplayMode(.inline)  // Centers the title
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Daily Reminders")
+                    .font(.custom("Roboto", size: 24))  // Use your custom font
+                    .foregroundColor(.primary)
+                    .bold()
+            }
+        }
         .onAppear {
             Task {
                 let weatherDescription = "Here's the weather today: " + weatherData.generateWeatherDescription() + " Here are your notes for the day: " + storedText

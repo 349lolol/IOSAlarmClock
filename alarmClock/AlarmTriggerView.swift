@@ -33,6 +33,14 @@ struct AlarmTriggeredView: View {
             )
         }
         .padding()
-        .navigationTitle("Alarm Triggered")
+        .navigationBarTitleDisplayMode(.inline)  // Centers the title
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Alarm going off")
+                    .font(.custom("Roboto", size: 24))  // Use your custom font
+                    .foregroundColor(.primary)
+                    .bold()
+            }
+        }
     }
 }

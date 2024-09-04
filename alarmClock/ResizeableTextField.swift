@@ -5,7 +5,6 @@
 //
 //  Created by Patrick Wei on 2024-08-10.
 //
-
 import SwiftUI
 
 struct ResizeableTextField: View {
@@ -21,11 +20,20 @@ struct ResizeableTextField: View {
         VStack(spacing: 20) {
             Text("Enter your notes:")
                 .font(.headline)
+                .foregroundColor(.blue) // Custom font color
 
             TextEditor(text: $userText)
+                .font(.body) // Custom font
+                .padding(10) // Add padding inside the text editor
+                .background(Color(.white)) // Background color for the text editor
+                .cornerRadius(12) // Rounded corners
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12) // Border with rounded corners
+                        .stroke(Color.blue, lineWidth: 2) // Custom border color and width
+                )
                 .frame(height: 150)
-                .border(Color.gray, width: 1)
-                .padding()
+                .frame(width: 330)
+                .padding(.horizontal)
                 .onChange(of: userText) { newValue in
                     storedText = newValue
                 }

@@ -1,3 +1,10 @@
+//
+//  SpeechManager.swift
+//  alarmClock
+//
+//  Created by Patrick Wei on 2024-09-03.
+//
+
 import AVFoundation
 
 class Speech: ObservableObject {

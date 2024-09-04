@@ -18,7 +18,12 @@ struct DailyNotes: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Enter your notes:")
+
+                    Text("Enter notes here")
+                        .font(.custom("Roboto", size: 12))  // Use your custom font
+                        .foregroundColor(.primary)
+                        .bold()
+
                 .font(.headline)
 
             TextEditor(text: $userText)

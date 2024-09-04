@@ -30,7 +30,15 @@ struct ContentView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Alarm Settings")
+            .navigationBarTitleDisplayMode(.inline)  // Centers the title
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Alarm Settings")
+                        .font(.custom("Roboto", size: 24))  // Use your custom font
+                        .foregroundColor(.primary)
+                        .bold()
+                }
+            }
             .onAppear {
                 startAlarmChecker()
                 listenForAlarmTrigger()
