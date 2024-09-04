@@ -44,6 +44,14 @@ struct AlarmSettingsView: View {
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color.blue.opacity(0.2), Color.blue.opacity(0.1)]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .cornerRadius(12) // Rounded corners
             }
         }
         .padding ()

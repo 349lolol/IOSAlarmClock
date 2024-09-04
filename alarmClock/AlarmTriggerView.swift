@@ -8,9 +8,6 @@ struct AlarmTriggeredView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Alarm Triggered!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
 
             Button(action: {
                 alarmTriggered.stopAlarm()
@@ -31,16 +28,17 @@ struct AlarmTriggeredView: View {
                 }
                 .hidden()
             )
+            .navigationBarTitleDisplayMode(.inline)  // Centers the title
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Alarm Triggered")
+                        .font(.custom("Roboto", size: 24))  // Use your custom font
+                        .foregroundColor(.primary)
+                        .bold()
+                }
+            }
+            .frame(width: 330)
         }
         .padding()
-        .navigationBarTitleDisplayMode(.inline)  // Centers the title
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Alarm going off")
-                    .font(.custom("Roboto", size: 24))  // Use your custom font
-                    .foregroundColor(.primary)
-                    .bold()
-            }
-        }
     }
 }

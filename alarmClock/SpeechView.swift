@@ -15,9 +15,6 @@ struct SpeechView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Reminders")
-                .font(.largeTitle)
-                .fontWeight(.bold)
 
             Button(action: {
                 Speech.shared.stopSpeaking()
@@ -45,6 +42,7 @@ struct SpeechView: View {
                     .bold()
             }
         }
+        .frame(width: 330)
         .onAppear {
             Task {
                 let weatherDescription = "Here's the weather today: " + weatherData.generateWeatherDescription() + " Here are your notes for the day: " + storedText
